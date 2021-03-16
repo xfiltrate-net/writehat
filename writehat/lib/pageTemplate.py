@@ -65,13 +65,6 @@ class PageTemplate(WriteHatBaseModel):
             header = ''
 
         try:
-            header = render_markdown(
-                header,
-                context={
-                    'engagement': self.report.engagement,
-                    'report': self.report
-                }
-            )
             return header
         except AttributeError as e:
             return ''
@@ -86,13 +79,6 @@ class PageTemplate(WriteHatBaseModel):
             footer = ''
 
         try:
-            footer = render_markdown(
-                footer,
-                context={
-                    'engagement': self.report.engagement,
-                    'report': self.report
-                }
-            )
             return footer
         except AttributeError as e:
             return ''
