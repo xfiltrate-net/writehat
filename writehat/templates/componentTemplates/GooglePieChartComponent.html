@@ -1,6 +1,7 @@
 <section class="l{{ level }} component{% if pageBreakBefore %} page-break{% endif %}" id="container_{{ id }}">
   {% include 'componentTemplates/Heading.html' %}
 
+
 <div id='figure_{{ id }}' class="figure"><div id="piechart"></div></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -11,15 +12,65 @@ google.charts.setOnLoadCallback(drawChart);
 
 // Draw the chart and set the chart values
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
+
+  var critical_risk=0;
+  var high_risk=0;
+  var medium_risk=0;
+  var low_risk=0;
+  var info_risk=0;
+
+{% for fgroup in report.ordered_fgroups %}
+  {% for finding in fgroup %}
+    {% if finding.severity == "Critical" %}
+  critical_risk=critical_risk+1;
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% for fgroup in report.ordered_fgroups %}
+  {% for finding in fgroup %}
+    {% if finding.severity == "High" %}
+  high_risk=high_risk+1;
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% for fgroup in report.ordered_fgroups %}
+  {% for finding in fgroup %}
+    {% if finding.severity == "Medium" %}
+  medium_risk=medium_risk+1;
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% for fgroup in report.ordered_fgroups %}
+  {% for finding in fgroup %}
+    {% if finding.severity == "Low" %}
+  low_risk=low_risk+1;
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% for fgroup in report.ordered_fgroups %}
+  {% for finding in fgroup %}
+    {% if finding.severity == "Info" %}
+  info_risk=info_risk+1;
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+
+  var data = google.visualization.arrayToDataTable([
     ['Level', 'Count'],
-    ['Critical', {{ critical }}],
-    ['High', {{ high }}],
-    ['Medium', {{ medium }}],
-    ['Low', {{ low }}]
+    ['Critical', critical_risk],
+    ['High', high_risk],
+    ['Medium', medium_risk],
+    ['Low', low_risk],
+    ['Informational', info_risk ],
   ]);
+
   // Optional; add a title and set the width and height of the chart
-  var options = {'is3D':true, 'width':900, 'height':550};
+  var options = {'is3D':true, 'width':900, 'height':550, 'colors':['#a600ff', '#d90000', '#f56b1c', '#fdc61d', '#4792df']};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));

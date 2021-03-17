@@ -2,17 +2,8 @@ from .base import *
 
 class PieChartComponentForm(ComponentForm):
 
-    critical = forms.CharField(label='Critical', required=True)
-    high     = forms.CharField(label='High',     required=True)
-    medium   = forms.CharField(label='Medium',   required=True)
-    low      = forms.CharField(label='Low',      required=True)
-
     field_order = [
                 'name',
-                'critical',
-                'high',
-                'medium',
-                'low',
                 'pageBreakBefore',
                 'showTitle'
     ]
@@ -22,15 +13,6 @@ class Component(BaseComponent):
 
     default_name = 'Google PieChart Component'
     formClass = PieChartComponentForm
-
-    # the "templatable" attribute decides whether or not that field
-    # gets saved if the report is ever converted into a template
-    fieldList = {
-        'critical': StringField(markdown=False, templatable=False),
-        'high'    : StringField(markdown=False, templatable=False),
-        'medium'  : StringField(markdown=False, templatable=False),
-        'low'     : StringField(markdown=False, templatable=False),
-    }
 
     # make sure to specify the HTML template
     htmlTemplate = 'componentTemplates/GooglePieChartComponent.html'
