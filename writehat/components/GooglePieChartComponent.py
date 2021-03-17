@@ -2,13 +2,15 @@ from .base import *
 
 class PieChartComponentForm(ComponentForm):
 
-    height = forms.CharField(label='Height', required=True)
-    width  = forms.CharField(label='Width', required=True)
+    height           = forms.CharField(label='Height', required=True)
+    width            = forms.CharField(label='Width', required=True)
+    legend_position  = forms.CharField(label='Legend position', required=True)
 
     field_order = [
                 'name',
                 'width',
                 'height',
+                'legend_position',
                 'pageBreakBefore',
                 'showTitle'
     ]
@@ -23,8 +25,9 @@ class Component(BaseComponent):
     htmlTemplate = 'componentTemplates/GooglePieChartComponent.html'
 
     fieldList = {
-        'width' : StringField(templatable=False, default="500"),
-        'height': StringField(templatable=False, default="500")
+        'width'          : StringField(templatable=False, default="500"),
+        'height'         : StringField(templatable=False, default="500"),
+        'legend_position': StringField(templatable=False, default="right")
     }
 
     # Font Awesome icon type + color (HTML/CSS)

@@ -1,8 +1,10 @@
 <section class="l{{ level }} component{% if pageBreakBefore %} page-break{% endif %}" id="container_{{ id }}">
   {% include 'componentTemplates/Heading.html' %}
 
+<div class="piechart">
+  <div id="piechart"></div>
+</div>
 
-<div id='figure_{{ id }}' class="figure"><div id="piechart"></div></div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
@@ -70,7 +72,7 @@ google.charts.setOnLoadCallback(drawChart);
   ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'is3D':true, 'width':{{ width }}, 'height':{{ height }}, 'colors':['#a600ff', '#d90000', '#f56b1c', '#fdc61d', '#4792df']};
+  var options = {'legend': {position: '{{ legend_position }}'}, 'is3D':true, 'width':{{ width }}, 'height':{{ height }}, 'colors':['#a600ff', '#d90000', '#f56b1c', '#fdc61d', '#4792df'], 'chartArea': {'width': '100%', 'height': '100%'}};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
