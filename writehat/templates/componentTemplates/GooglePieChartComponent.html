@@ -70,7 +70,7 @@ google.charts.setOnLoadCallback(drawChart);
   ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'is3D':true, 'width':900, 'height':550, 'colors':['#a600ff', '#d90000', '#f56b1c', '#fdc61d', '#4792df']};
+  var options = {'is3D':true, 'width':{{ width }}, 'height':{{ height }}, 'colors':['#a600ff', '#d90000', '#f56b1c', '#fdc61d', '#4792df']};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
