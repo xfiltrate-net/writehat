@@ -1,0 +1,17 @@
+{% load custom_tags %}
+<section class="l{{ level }} component{% if pageBreakBefore %} page-break{% endif %}" id="container_{{ id }}">
+{% include 'componentTemplates/Heading.html' %}
+<p>
+<div class='generated-table'>
+    <table class="customer-info">
+      <tr>
+        <td>Unit</td><td class="bold">{{ unit }}</td><td>Distribution</td><td class="bold">{{ distribution }}</td>
+      </tr>
+      <tr>
+        <td>Document Type</td><td class="bold">{{ document_type }}</td><td>Version</td><td class="bold">{{ version }}</td>
+      </tr>
+      <tr>
+        <td>Document ID</td><td class="bold">{{ document_id }}</td><td>Date</td><td class="bold">{{ date }}</td>
+      </tr>
+    </table>
+</div>
