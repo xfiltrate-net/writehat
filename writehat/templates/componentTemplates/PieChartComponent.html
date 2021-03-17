@@ -6,11 +6,12 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<div id='figure_{{ id }}' class="figure">
 <figure class="highcharts-figure">
     <div id="highcharts-container"></div>
 </figure>
   <script>
-    Highcharts.chart('highcharts-container', {
+  Highcharts.chart('highcharts-container', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -26,16 +27,6 @@
     accessibility: {
         point: {
             valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
         }
     },
     series: [{
@@ -72,5 +63,7 @@
             y: 2.61
         }]
     }]
-});</script>
-</section>
+});
+
+  </script>
+</div>
