@@ -5,6 +5,10 @@
         }
         @top-center {
             content: none;
+            border: 0px !important;
+        }
+        @bottom-center {
+            border: 0px !important;
         }
     }
 
