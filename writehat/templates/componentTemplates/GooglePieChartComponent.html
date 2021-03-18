@@ -55,7 +55,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 {% for fgroup in report.ordered_fgroups %}
   {% for finding in fgroup %}
-    {% if finding.severity == "Info" %}
+    {% if finding.severity == "Informational" %}
   info_risk=info_risk+1;
     {% endif %}
   {% endfor %}
@@ -68,7 +68,7 @@ google.charts.setOnLoadCallback(drawChart);
     ['High', high_risk],
     ['Medium', medium_risk],
     ['Low', low_risk],
-    ['Informational', info_risk ],
+    ['Informational', info_risk],
   ]);
 
   // Optional; add a title and set the width and height of the chart
