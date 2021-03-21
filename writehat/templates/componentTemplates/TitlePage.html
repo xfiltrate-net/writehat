@@ -3,5 +3,7 @@
   
   <p class='report-title'>{% if company %}{{ company }}{% else %}{{ engagement.customer.name }}{% endif %}</p>
   <p class='report-subtitle'>{% if assessmentType %}{{ assessmentType }}{% else %}{{ report.name }}{% endif %}</p>
+  {% if reportDate %}
   <p class='report-date'>Date: {{ reportDate|date:"Y/m/d" }}</p>
+  {% endif %}
 </div>
