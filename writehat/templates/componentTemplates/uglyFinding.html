@@ -1,0 +1,59 @@
+{% load custom_tags %}
+<div id="finding-{{ finding.id }}" scoring-type="CVSS" class="finding container" finding-severity="{{ finding.severity }}">
+<h3>{% if showFindingNumbers %}[{{ finding.number }}] {% endif %}{{ finding.name }}</h3>
+<h4>Description</h4>
+{% if finding.description %}
+	{% markdown finding.description %}
+{% endif %}
+
+{% if finding.background %}
+<h4>Background</h4>
+	{% markdown finding.background %}
+<br />
+{% endif %}
+
+<b>CVSS3.1 {{ finding.score }}</b> {{ finding.vector|slice:":58" }}
+<br />
+
+<h4>Affected</h4>
+{% if finding.affectedResources %}
+<div class='generated-table'>
+	{% markdown finding.affectedResources %}
+</div>
+<br />
+{% endif %}
+{% if finding.figures|length > 0 %}
+<h4>Evidences</h4>
+<div class='generated-table'>
+<table><thead><tr><th>Evidences</th></tr></thead>
+<tr><td>
+	{% for figure in finding.figures_ending %}
+  		{% include 'reportTemplates/figure.html' with figure=figure %}
+	{% endfor %}
+</td></tr>
+</table>
+</div>
+<br />
+{% endif %}
+
+{% if finding.toolsUsed %}
+<h4>Tools Used</h4>
+	{% markdown finding.toolsUsed %}
+{% endif %}
+
+{% if finding.proofOfConcept %}
+<h4>Proof Of Concept</h4>
+	{% markdown finding.proofOfConcept %}
+{% endif %}
+
+{% if finding.remediation %}
+<h4>Resolution</h4>
+	{% markdown finding.remediation %}
+{% endif %}
+
+{% if finding.references %}
+<h4>References</h4>
+	{% markdown finding.references %}
+{% endif %}
+</div>
+
